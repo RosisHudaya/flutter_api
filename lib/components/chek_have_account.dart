@@ -23,7 +23,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
           child: Text(
             login ? "Daftar aja dulu" : "Login kuy",
             style: const TextStyle(
-              color: Colors.purple,
+              color: Colors.deepPurpleAccent,
               fontWeight: FontWeight.bold,
             ),
           ),

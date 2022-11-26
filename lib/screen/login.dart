@@ -1,6 +1,8 @@
-// import 'dart:async';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_api/screen/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../api/http_helper.dart';
 import '../components/chek_have_account.dart';
 import '../screen/registrasi.dart';
 
@@ -15,6 +17,33 @@ class _Login extends State<Login> {
 
   TextEditingController etEmail = TextEditingController();
   TextEditingController etPassword = TextEditingController();
+
+  Future doLogin() async {
+    final email = etEmail.text;
+    final password = etPassword.text;
+    const deviceId = "12345";
+    final response = await HttpHelper().login(email, password, deviceId);
+    // ignore: avoid_print
+    print(response.body);
+
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    const key = 'token';
+    final value = pref.get(key);
+    final token = value;
+    if (token == null) {
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Login()),
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Home()),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,18 +167,11 @@ class _Login extends State<Login> {
                   backgroundColor: Colors.purple.shade900,
                   elevation: 5,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const Home();
-                      },
-                    ),
-                  );
+                  doLogin();
                 },
                 child: const Text(
                   "Login",
@@ -175,7 +197,7 @@ class _Login extends State<Login> {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

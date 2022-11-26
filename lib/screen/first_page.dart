@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_api/screen/login.dart';
 import 'package:flutter_api/screen/registrasi.dart';
 
+import '../components/chek_have_account.dart';
+
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
   @override
@@ -27,7 +29,7 @@ class _Firstpage extends State<FirstPage> {
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 60,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 70, right: 70),
@@ -38,7 +40,7 @@ class _Firstpage extends State<FirstPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple.shade900,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 onPressed: () {
@@ -64,39 +66,51 @@ class _Firstpage extends State<FirstPage> {
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70, right: 70),
-            child: SizedBox(
-              height: 55,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade50,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
+          AlreadyHaveAnAccountCheck(
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const Register();
+                  },
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const Register();
-                      },
-                    ),
-                  );
-                },
-                child: const Text(
-                  "REGISTER",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 23,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
+              );
+            },
           ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 70, right: 70),
+          //   child: SizedBox(
+          //     height: 55,
+          //     width: double.infinity,
+          //     child: ElevatedButton(
+          //       style: ElevatedButton.styleFrom(
+          //         backgroundColor: Colors.purple.shade50,
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(50),
+          //         ),
+          //       ),
+          //       onPressed: () {
+          //         Navigator.push(
+          //           context,
+          //           MaterialPageRoute(
+          //             builder: (context) {
+          //               return const Register();
+          //             },
+          //           ),
+          //         );
+          //       },
+          //       child: const Text(
+          //         "REGISTER",
+          //         style: TextStyle(
+          //           fontWeight: FontWeight.w400,
+          //           fontSize: 23,
+          //           color: Colors.black,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

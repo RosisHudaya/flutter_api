@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api/screen/first_page.dart';
+import 'package:flutter_api/screen/home.dart';
 import 'package:flutter_api/screen/login.dart';
 import 'package:flutter_api/screen/registrasi.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const FirstPage(),
         "/login": (context) => const Login(),
         "/register": (context) => const Register(),
+        "/home": (context) => const Home(),
       },
       title: 'Flutter Demo',
       theme: ThemeData(
