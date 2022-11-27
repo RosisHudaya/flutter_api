@@ -36,7 +36,7 @@ class _Register extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.deepPurple.shade50,
+      backgroundColor: Colors.red.shade50,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -52,10 +52,10 @@ class _Register extends State<Register> {
             style: TextStyle(
               fontWeight: FontWeight.w900,
               fontSize: 50,
-              color: Colors.purple.shade900,
+              color: Colors.redAccent.shade700,
               shadows: [
                 Shadow(
-                  color: Colors.purple.shade300,
+                  color: Colors.red.shade300,
                   blurRadius: 10,
                   offset: const Offset(4.0, 4.0),
                 ),
@@ -83,13 +83,13 @@ class _Register extends State<Register> {
                 filled: true,
                 fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.purple.shade100),
+                  borderSide: BorderSide(color: Colors.red.shade100),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 1.5,
-                    color: Colors.purple.shade100,
+                    color: Colors.red.shade100,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -117,13 +117,13 @@ class _Register extends State<Register> {
                 filled: true,
                 fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.purple.shade100),
+                  borderSide: BorderSide(color: Colors.red.shade100),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 1.5,
-                    color: Colors.purple.shade100,
+                    color: Colors.red.shade100,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -162,13 +162,13 @@ class _Register extends State<Register> {
                 filled: true,
                 fillColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.purple.shade100),
+                  borderSide: BorderSide(color: Colors.red.shade100),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 1.5,
-                    color: Colors.purple.shade100,
+                    color: Colors.red.shade100,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -185,7 +185,7 @@ class _Register extends State<Register> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple.shade900,
+                  backgroundColor: Colors.red.shade900,
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -219,7 +219,7 @@ class _Register extends State<Register> {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

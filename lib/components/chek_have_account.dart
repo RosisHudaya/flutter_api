@@ -22,8 +22,8 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
           onTap: press as void Function()?,
           child: Text(
             login ? "Daftar aja dulu" : "Login kuy",
-            style: const TextStyle(
-              color: Colors.deepPurpleAccent,
+            style: TextStyle(
+              color: Colors.red.shade600,
               fontWeight: FontWeight.bold,
             ),
           ),

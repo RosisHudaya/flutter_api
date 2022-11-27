@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_api/screen/first_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
-import 'package:flutter/src/rendering/box.dart';
 
 import '../api/http_helper.dart';
 
@@ -68,12 +66,12 @@ class _Home extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.purple.shade900,
+      backgroundColor: Colors.red.shade900,
       body: Column(
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.purple.shade900,
+              color: Colors.red.shade900,
             ),
             height: 180,
             child: Column(
@@ -92,8 +90,8 @@ class _Home extends State<Home> {
                         fontSize: 25,
                         shadows: [
                           Shadow(
-                            color: Colors.purple.shade300,
-                            blurRadius: 10,
+                            color: Colors.red.shade300,
+                            blurRadius: 6,
                             offset: const Offset(4.0, 4.0),
                           ),
                         ],
