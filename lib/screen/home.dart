@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_api/screen/first_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
+import 'package:flutter/src/rendering/box.dart';
 
 import '../api/http_helper.dart';
 
@@ -150,8 +152,6 @@ class _Home extends State<Home> {
                 borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(10.0),
                   topLeft: Radius.circular(10.0),
-                  // bottomRight: Radius.circular(10.0),
-                  // bottomLeft: Radius.circular(10.0),
                 ),
               ),
               child: ListView.builder(
@@ -190,34 +190,27 @@ class _Home extends State<Home> {
                       ),
                     ),
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                            width: 1.5,
-                          ),
-                          left: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                            width: 1.5,
-                          ),
-                          right: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                            width: 1.5,
-                          ),
-                          bottom: BorderSide(
-                            color: Colors.deepPurpleAccent,
-                            width: 1.5,
-                          ),
+                      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      decoration: BoxDecoration(
+                        color: Colors.purple.shade50,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
                         ),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 7,
+                            offset: Offset(6.0, 6.0),
+                          ),
+                        ],
                       ),
                       child: ListTile(
-                        title: Text(
-                          kategori.name,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.normal,
+                        title: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
+                          child: Text(
+                            kategori.name,
+                            textAlign: TextAlign.start,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
