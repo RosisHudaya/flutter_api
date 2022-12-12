@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_api/screen/login.dart';
-import 'package:flutter_api/screen/registrasi.dart';
+import 'dart:async';
 
-import '../components/chek_have_account.dart';
+import 'package:flutter/material.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -12,83 +10,63 @@ class FirstPage extends StatefulWidget {
 
 class _Firstpage extends State<FirstPage> {
   @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 4), () {
+      Navigator.pushNamed(
+        context,
+        '/login',
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.red.shade50,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 145,
-            child: Text(
-              'Stisla',
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 80,
-                color: Colors.redAccent.shade700,
-                shadows: [
-                  Shadow(
-                    color: Colors.red.shade300,
-                    blurRadius: 10,
-                    offset: const Offset(6.0, 6.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 35,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 70, right: 70),
-            child: SizedBox(
-              height: 55,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red.shade900,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const Login();
-                      },
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomLeft,
+              stops: const [
+                0.3,
+                0.6,
+                0.9
+              ],
+              colors: [
+                Colors.red.shade50,
+                Colors.red.shade200,
+                Colors.red.shade300,
+              ]),
+        ),
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 150,
+              backgroundColor: Colors.redAccent,
+              child: Text(
+                'Stisla',
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 90,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      color: Colors.red.shade300,
+                      blurRadius: 10,
+                      offset: const Offset(6.0, 6.0),
                     ),
-                  );
-                },
-                child: const Text(
-                  "LOGIN",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 23,
-                  ),
+                  ],
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          AlreadyHaveAnAccountCheck(
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const Register();
-                  },
-                ),
-              );
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

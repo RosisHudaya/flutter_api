@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_api/screen/first_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
 
@@ -79,15 +80,36 @@ class _Home extends State<Home> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                      const EdgeInsets.symmetric(vertical: 35, horizontal: 25),
+                  child: Text(
+                    'Dashboard',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 29,
+                      fontFamily: 'Raleway',
+                      shadows: [
+                        Shadow(
+                          color: Colors.red.shade300,
+                          blurRadius: 6,
+                          offset: const Offset(4.0, 4.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Welcome $name',
                       style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
                         shadows: [
                           Shadow(
                             color: Colors.red.shade300,
@@ -100,41 +122,42 @@ class _Home extends State<Home> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      email,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.logout_sharp,
-                        color: Colors.white,
-                        size: 29,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const FirstPage();
-                            },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          email,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                            fontFamily: 'Raleway',
                           ),
-                        );
-                        logOut();
-                      },
-                    ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.logout_sharp,
+                            color: Colors.white,
+                            size: 29,
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/login',
+                            );
+                            logOut();
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -208,6 +231,9 @@ class _Home extends State<Home> {
                           child: Text(
                             kategori.name,
                             textAlign: TextAlign.start,
+                            style: const TextStyle(
+                              fontFamily: 'Raleway',
+                            ),
                           ),
                         ),
                       ),

@@ -16,7 +16,10 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       children: <Widget>[
         Text(
           login ? "Belum punya akun ? " : "Sudah punya akun ? ",
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(
+            color: Colors.black,
+            fontFamily: 'Raleway',
+          ),
         ),
         GestureDetector(
           onTap: press as void Function()?,
@@ -24,7 +27,8 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
             login ? "Daftar aja dulu" : "Login kuy",
             style: TextStyle(
               color: Colors.red.shade600,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w700,
+              fontFamily: 'Raleway',
             ),
           ),
         )
