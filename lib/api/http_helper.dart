@@ -85,4 +85,23 @@ class HttpHelper {
     final value = prefs.get(key) ?? 0;
     print('read : $value');
   }
+
+  Future<Response> requestAddCategory(String name) async {
+    var url = Uri.parse(_baseUrl + 'category');
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    final response = await post(
+      url,
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+        "Authorization": "Bearer $token",
+      },
+      body: {
+        "name": name,
+      },
+    );
+    return response;
+  }
 }

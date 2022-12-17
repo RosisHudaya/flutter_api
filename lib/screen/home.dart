@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
 
+import '../api/category_service.dart';
 import '../api/http_helper.dart';
 
 class Home extends StatefulWidget {
@@ -45,6 +46,15 @@ class _Home extends State<Home> {
         listCategory.add(Category.fromJson(listRespon[i]));
       }
     });
+  }
+
+  doAddCategory() async {
+    final name = etCategory.text;
+    final response = await CategoryService().addCategory(name);
+    print(response.body);
+    listCategory.clear();
+    getKategori();
+    etCategory.clear();
   }
 
   @override
@@ -189,7 +199,9 @@ class _Home extends State<Home> {
                       ),
                     ),
                     child: const Text("Add"),
-                    onPressed: () {},
+                    onPressed: () {
+                      doAddCategory();
+                    },
                   ),
                 ),
               ),
@@ -280,49 +292,6 @@ class _Home extends State<Home> {
               ),
             ),
           ),
-          // Container(
-          //   color: Colors.purple.shade50,
-          //   child: Padding(
-          //     padding: const EdgeInsets.only(
-          //       left: 20,
-          //       right: 20,
-          //       top: 20,
-          //       bottom: 20,
-          //     ),
-          //     child: TextFormField(
-          //       style: const TextStyle(
-          //         fontFamily: 'Raleway',
-          //       ),
-          //       controller: etCategory,
-          //       decoration: InputDecoration(
-          //         labelText: 'Add Category',
-          //         labelStyle: const TextStyle(
-          //           fontFamily: 'Raleway',
-          //         ),
-          //         prefixIcon: const Align(
-          //           widthFactor: 2,
-          //           heightFactor: 1.5,
-          //         ),
-          //         contentPadding: const EdgeInsets.symmetric(
-          //           vertical: 10,
-          //         ),
-          //         filled: true,
-          //         fillColor: Colors.white,
-          //         focusedBorder: OutlineInputBorder(
-          //           borderSide: BorderSide(color: Colors.purple.shade50),
-          //           borderRadius: BorderRadius.circular(10),
-          //         ),
-          //         enabledBorder: OutlineInputBorder(
-          //           borderSide: BorderSide(
-          //             width: 1.5,
-          //             color: Colors.purple.shade50,
-          //           ),
-          //           borderRadius: BorderRadius.circular(10),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
