@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_api/screen/edit_category.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
 
@@ -253,10 +254,12 @@ class _Home extends State<Home> {
                     ),
                     onDismissed: (DismissDirection direction) async {
                       if (direction == DismissDirection.startToEnd) {
-                        Navigator.pushNamed(
-                          context,
-                          '/edit',
-                        );
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  editCategory(category: listCategory[index]),
+                            ));
                       } else {
                         final response = await HttpHelper()
                             .deleteCategory(listCategory[index]);

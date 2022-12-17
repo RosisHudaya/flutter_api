@@ -1,14 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/api/http_helper.dart';
+import 'package:flutter_api/components/category_models.dart';
+
+import 'home.dart';
 
 class editCategory extends StatefulWidget {
-  const editCategory({super.key});
+  const editCategory({super.key, required this.category});
 
+  final Category category;
   @override
   State<editCategory> createState() => _editCategoryState();
 }
 
 class _editCategoryState extends State<editCategory> {
-  TextEditingController etCategory = TextEditingController();
+  TextEditingController? etCategory;
+
+  doEditCategory() async {
+    final name = etCategory?.text;
+    final response = await HttpHelper().editCategory(widget.category, name!);
+    print(response.body);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    etCategory = TextEditingController(text: widget.category.name);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +93,7 @@ class _editCategoryState extends State<editCategory> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/home',
-                    );
+                    doEditCategory();
                   },
                   child: const Text(
                     "Edit Category",
