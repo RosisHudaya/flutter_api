@@ -251,12 +251,16 @@ class _Home extends State<Home> {
                         ),
                       ),
                     ),
-                    onDismissed: (DismissDirection direction) {
+                    onDismissed: (DismissDirection direction) async {
                       if (direction == DismissDirection.startToEnd) {
                         Navigator.pushNamed(
                           context,
                           '/edit',
                         );
+                      } else {
+                        final response = await HttpHelper()
+                            .deleteCategory(listCategory[index]);
+                        print(response.body);
                       }
                     },
                     child: Container(
