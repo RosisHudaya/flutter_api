@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_api/components/category_models.dart';
 
 class HttpHelper {
-  final String _baseUrl = 'http://192.168.0.1:8000/api/';
-  // final String _baseUrl = 'http://10.0.2.2:8000/api/';
+  // final String _baseUrl = 'http://192.168.1.113:8000/api/';
+  final String _baseUrl = 'http://10.0.2.2:8000/api/';
   final String token = '';
 
   Future<Response> login(String email, String password, String deviceId) async {
@@ -76,8 +76,6 @@ class HttpHelper {
 
   _save(String key, String data) async {
     final prefs = await SharedPreferences.getInstance();
-    // const key = 'token';
-    // final value = token;
     prefs.setString(key, data);
   }
 

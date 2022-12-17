@@ -19,6 +19,7 @@ class _Home extends State<Home> {
   String name = '';
   String email = '';
   List listCategory = [];
+  TextEditingController etCategory = TextEditingController();
 
   getPref() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -66,7 +67,6 @@ class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.red.shade900,
       body: Column(
         children: [
@@ -78,23 +78,15 @@ class _Home extends State<Home> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 35, horizontal: 25),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
                   child: Text(
                     'Dashboard',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w900,
-                      fontSize: 29,
+                      fontSize: 32,
                       fontFamily: 'Raleway',
-                      shadows: [
-                        Shadow(
-                          color: Colors.red.shade300,
-                          blurRadius: 6,
-                          offset: const Offset(4.0, 4.0),
-                        ),
-                      ],
                     ),
                   ),
                 ),
@@ -166,6 +158,43 @@ class _Home extends State<Home> {
           const SizedBox(
             height: 20,
           ),
+          Container(
+            margin: const EdgeInsets.all(16),
+            child: TextFormField(
+              controller: etCategory,
+              decoration: InputDecoration(
+                hintText: "Input Your Categories Name",
+                hintStyle: const TextStyle(fontFamily: 'Raleway'),
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.white,
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                suffixIcon: Container(
+                  margin: const EdgeInsets.fromLTRB(0, 8, 12, 8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red.shade900,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                    child: const Text("Add"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -210,6 +239,14 @@ class _Home extends State<Home> {
                         ),
                       ),
                     ),
+                    onDismissed: (DismissDirection direction) {
+                      if (direction == DismissDirection.startToEnd) {
+                        Navigator.pushNamed(
+                          context,
+                          '/edit',
+                        );
+                      }
+                    },
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
@@ -243,6 +280,49 @@ class _Home extends State<Home> {
               ),
             ),
           ),
+          // Container(
+          //   color: Colors.purple.shade50,
+          //   child: Padding(
+          //     padding: const EdgeInsets.only(
+          //       left: 20,
+          //       right: 20,
+          //       top: 20,
+          //       bottom: 20,
+          //     ),
+          //     child: TextFormField(
+          //       style: const TextStyle(
+          //         fontFamily: 'Raleway',
+          //       ),
+          //       controller: etCategory,
+          //       decoration: InputDecoration(
+          //         labelText: 'Add Category',
+          //         labelStyle: const TextStyle(
+          //           fontFamily: 'Raleway',
+          //         ),
+          //         prefixIcon: const Align(
+          //           widthFactor: 2,
+          //           heightFactor: 1.5,
+          //         ),
+          //         contentPadding: const EdgeInsets.symmetric(
+          //           vertical: 10,
+          //         ),
+          //         filled: true,
+          //         fillColor: Colors.white,
+          //         focusedBorder: OutlineInputBorder(
+          //           borderSide: BorderSide(color: Colors.purple.shade50),
+          //           borderRadius: BorderRadius.circular(10),
+          //         ),
+          //         enabledBorder: OutlineInputBorder(
+          //           borderSide: BorderSide(
+          //             width: 1.5,
+          //             color: Colors.purple.shade50,
+          //           ),
+          //           borderRadius: BorderRadius.circular(10),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

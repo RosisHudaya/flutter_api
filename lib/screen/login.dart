@@ -16,8 +16,9 @@ class Login extends StatefulWidget {
 class _Login extends State<Login> {
   bool _isObscure = true;
 
-  TextEditingController etEmail = TextEditingController();
-  TextEditingController etPassword = TextEditingController();
+  TextEditingController etEmail =
+      TextEditingController(text: 'superadmin@gmail.com');
+  TextEditingController etPassword = TextEditingController(text: 'password');
 
   Future doLogin() async {
     final email = etEmail.text;
@@ -57,7 +58,7 @@ class _Login extends State<Login> {
               children: [
                 Image.asset(
                   'assets/try.png',
-                  width: 180,
+                  width: 130,
                 ),
                 const SizedBox(
                   height: 10,
