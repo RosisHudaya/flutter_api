@@ -78,6 +78,20 @@ class _Home extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Center(
+          child: Text(
+            'List Category',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 29,
+              fontFamily: 'Raleway',
+            ),
+          ),
+        ),
+        backgroundColor: Colors.red.shade900,
+        automaticallyImplyLeading: false,
+      ),
       backgroundColor: Colors.red.shade900,
       body: Column(
         children: [
@@ -85,29 +99,17 @@ class _Home extends State<Home> {
             decoration: BoxDecoration(
               color: Colors.red.shade900,
             ),
-            height: 180,
+            height: 100,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-                  child: Text(
-                    'Dashboard',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 32,
-                      fontFamily: 'Raleway',
-                    ),
-                  ),
-                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Welcome $name',
+                      name,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
@@ -126,7 +128,7 @@ class _Home extends State<Home> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
+                    horizontal: 28,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,15 +168,12 @@ class _Home extends State<Home> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
           Container(
             margin: const EdgeInsets.all(16),
             child: TextFormField(
               controller: etCategory,
               decoration: InputDecoration(
-                hintText: "Input Your Categories Name",
+                hintText: "Input Categories",
                 hintStyle: const TextStyle(fontFamily: 'Raleway'),
                 filled: true,
                 fillColor: Colors.white,
@@ -267,7 +266,7 @@ class _Home extends State<Home> {
                       }
                     },
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
                       decoration: BoxDecoration(
                         color: Colors.purple.shade50,
                         borderRadius: const BorderRadius.all(
